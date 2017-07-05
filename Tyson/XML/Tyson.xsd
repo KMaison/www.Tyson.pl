@@ -1,0 +1,186 @@
+﻿<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:element name="Mike_Tyson" type="mike_tyson_typ"/>
+  <xsd:element name="pseudonim" type="xsd:string"/>
+  <xsd:element name="data_urodzenia" type="xsd:date"/>
+  <xsd:element name="kategoria_wagowa" type="kategoria_wagowa_typ"/>
+  <xsd:element name="tytuly" type="tytuly_typ"/>
+  <xsd:element name="walki" type="walki_typ"/>
+  <xsd:element name="walka"  type="walka_typ" />
+  <xsd:element name="warunki_fizyczne" type="warunki_fizyczne_typ"/>
+  <xsd:element name="zdjecie" type="zdjecie_typ"/>
+  <xsd:element name="filmografia"  type="filmy_typ" />
+  <xsd:attribute name="data_debiutu" type="data_debiutu_typ"/>
+  <xsd:attribute name="wynik" type="xsd:string"/>
+  <xsd:attribute name="wikipedia" type="xsd:anyURI"/>
+  <xsd:attribute name="ile_nominacji" type="xsd:positiveInteger"/>
+  <xsd:attribute name="tytul_filmu" type="xsd:string"/>
+  
+  
+  <xsd:complexType name="mike_tyson_typ">
+    <xsd:sequence>
+      <xsd:element ref="zdjecie"/>
+      <xsd:element name="podstawowe_informacje" type="podstawowe_informacje_typ"/>
+      <xsd:element ref="warunki_fizyczne"/>
+      <xsd:group  ref="bilans"/>
+      <xsd:element name="trenerzy">
+        <xsd:simpleType>
+          <xsd:list itemType="xsd:string"/>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="osiagniecia">
+      <xsd:complexType>
+        <xsd:sequence>
+          <xsd:element ref="tytuly"/>
+          <xsd:element name="nagrody" type="tytuly_typ"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      </xsd:element>
+      <xsd:element ref="walki"/>
+      <xsd:element ref="filmografia"/>
+    </xsd:sequence>
+    <xsd:attribute ref="data_debiutu"/>
+    <xsd:attribute ref="wikipedia"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="podstawowe_informacje_typ">
+    <xsd:all>
+      <xsd:element name="imie_i_nazwisko">
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="7"/>
+          <xsd:maxLength value="50"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      </xsd:element>
+      <xsd:element ref="pseudonim"/>
+      <xsd:element ref="kategoria_wagowa"/>
+      <xsd:element ref="data_urodzenia"/>
+      <xsd:element name="miejsce_urodzenia" type="xsd:string"/>
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:simpleType name="data_debiutu_typ">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[0-9]{4}/[0-9]{2}/[0-9]{2}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:group name="bilans">
+    <xsd:sequence>
+      <xsd:element name="liczba_walk">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:integer">
+            <xsd:minExclusive value="0"/>
+            <xsd:maxExclusive value="100"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="wygrane"  type="xsd:nonNegativeInteger"/>
+      <xsd:element name="przegrane"  type="xsd:nonNegativeInteger"/>
+      <xsd:element name="remisy"  type="xsd:nonNegativeInteger"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="warunki_fizyczne_typ">
+    <xsd:sequence>
+      <xsd:element name="wzrost" type="xsd:integer"/>
+      <xsd:element name="zasieg_ramion" type="xsd:integer"/>
+      <xsd:element name="waga" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  
+  <xsd:simpleType name="kategoria_wagowa_typ">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="superciężka"/>
+      <xsd:enumeration value="ciężka"/>
+      <xsd:enumeration value="półciężka"/>
+      <xsd:enumeration value="średnia"/>
+      <xsd:enumeration value="lekka"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+
+  <xsd:complexType name="tytuly_typ" mixed="true">
+    <xsd:sequence maxOccurs="unbounded">
+      <xsd:element name="rok"   type="rok_typ" />
+      <xsd:element name="tytul"  type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="rok_typ">
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="walki_typ">
+    <xsd:sequence maxOccurs="unbounded">
+      <xsd:element ref="walka"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="walka_typ">
+    <xsd:sequence>
+      <xsd:element name="data" type="daty_typ" />
+      <xsd:element name="miejsce_walki" type="miejsce_typ" />
+      <xsd:element name="przeciwnik">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="zdjecie"/>
+            <xsd:element ref="pseudonim"/>
+            <xsd:group ref="bilans"/>
+            <xsd:element ref="warunki_fizyczne"/>
+          </xsd:sequence>
+          <xsd:attribute ref="wikipedia"/>
+          <xsd:attribute name="imieinazwisko" type="xsd:string"/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ciekawostka"  minOccurs="0" maxOccurs="unbounded" type="xsd:string"/>
+    </xsd:sequence>
+    <xsd:attribute ref="wynik"/>
+  </xsd:complexType>
+
+  <xsd:simpleType name="daty_typ">
+    <xsd:union memberTypes="rok_typ  data_typ"/>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name="data_typ">
+  <xsd:restriction base="xsd:date">
+  </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="miejsce_typ">
+    <xsd:sequence>
+      <xsd:element name="państwo"  type="xsd:string"/>
+      <xsd:element name="miasto"  type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  
+  <xsd:complexType name="zdjecie_typ" >
+    <xsd:all>
+      <xsd:element name="href" type="xsd:anyURI" />
+    </xsd:all>
+    <xsd:attribute name="alt" type="xsd:string" />
+  </xsd:complexType>
+
+  <xsd:complexType name="filmy_typ" >
+    <xsd:sequence  maxOccurs="unbounded">
+      <xsd:element name="film" type="film_typ" />
+    </xsd:sequence>
+    <xsd:attribute ref="ile_nominacji"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="film_typ" >
+    <xsd:sequence >
+      <xsd:element name="rok_premiery" type="xsd:gYear" />
+      <xsd:element name="ile_nominacji" type="xsd:integer" />
+      <xsd:element name="ile_nagrod" type="xsd:integer" />
+    </xsd:sequence>
+    <xsd:attribute ref="tytul_filmu"/>
+  </xsd:complexType>
+</xsd:schema>
+

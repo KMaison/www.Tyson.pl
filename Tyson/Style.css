@@ -1,0 +1,178 @@
+﻿@charset "UTF-8";
+
+        #container {
+            width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            border-style: solid;
+            border-color: black;
+            border-width: 1px;
+            background-color: lightgray;
+
+        }
+
+        #logo {
+            background-image:url(tlo3.png);
+            color: #960606;
+            text-align: left;
+            padding: 2px 20px 50px;
+            font-size:100px;
+            text-shadow:0 0 10px grey;
+            border-bottom-style: solid;
+            border-color: black;
+            border-width: 0.5px;
+
+        }
+        img.logo
+        {
+            float:right;
+            width: 147px;
+        }
+
+        .stronaglowna
+        {
+            display:block;
+            width:auto;
+            height:auto;
+        }
+        .stronaglowna:link
+        {
+            text-decoration: none;
+            color: #960606;
+            display:block;
+        }
+        .stronaglowna:visited
+        {
+            text-decoration: none;
+            color: #960606;
+            display:block;
+        }
+        #container2
+        {
+            position:relative;
+        }
+        #menu {
+            background-image:url(tlo.png);
+            width: 198px;
+            height:auto;
+            font-size:20px;
+            border-right-style: solid;
+            border-color: black;
+            border-width: 0.5px;
+            float: left;
+            position:absolute;
+            top: 0; 
+            bottom:0;
+            padding:10px;
+        }
+        ul.ulmenu a 
+        {
+            color: #960606;
+        }
+        
+        #content {
+            margin-left:220px;
+            margin-bottom:30px;
+            min-height:500px;
+            float: left;
+            padding: 0px 20px;
+            width: 740px;
+            text-align: center;
+            text-align:justify;
+
+        }
+        .tekst
+        {
+            color:#191919;
+            font-size: 18px;
+        }
+        .naglowek
+        {
+            font-weight: 700;
+            font-size:22px;
+            color:#191919;
+        }
+        .tytul
+        {
+            font-size:25px;
+            color:#191919;
+            font-weight:900;
+            text-align:left;
+        }
+        table
+        {
+            border: 1px solid; 
+            border-collapse:collapse;
+        }
+        td
+        {
+	        border: 1px solid grey;
+            padding:7px;
+            font-size:15px;    color:#191919;
+        }
+        td.szaro
+        {
+            background-color:#c1bdbd;
+            font-weight:bold;
+            border-right: hidden;    color:#191919;
+        }
+        th
+        {
+            border: 1px solid;
+            padding: 2px 10px 10px;
+            vertical-align: top;
+            font-weight:normal;
+        }
+        img.zdjecia
+        {
+           margin-left: 40px;
+           width: 650px;
+        }
+        img.zdjecie
+        {
+            width: 200px; 
+            margin:15px;
+        }
+          #animacja {
+          width:770px;
+          float: left;
+          border:4px solid #DDD;
+          font-size: 10px;
+           text-shadow:none;
+          background-color:#EEE;
+          overflow:hidden;
+          position:relative;
+          height:17px;
+          line-height:2.2em;
+          margin:20px 0;
+         
+        }
+
+        #animacja > p {
+              position:absolute;
+              margin:0;
+              white-space:nowrap;
+              animation:przesuwanie 18s linear infinite;
+        }
+        @keyframes przesuwanie
+        {
+          0% { transform:translateX(130%); }
+          100% { transform:translateX(-100%); }
+        }
+        #footer {
+             background-color: #960606;
+            color: white;
+            text-align: center;
+            padding: 10px 20px 5px;
+            border-top-style: solid;
+            border-color: black;
+            border-width: 0.5px;
+        }
+       
+        .clearfix{
+            clear:both;
+        }
+        a
+        {
+        text-decoration:none;
+        }

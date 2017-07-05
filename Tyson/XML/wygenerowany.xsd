@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Mike_Tyson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="zdjecie">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="href" type="xs:string" />
+            </xs:sequence>
+            <xs:attribute name="alt" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="podstawowe_informacje">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="imie_i_nazwisko" type="xs:string" />
+              <xs:element name="pseudonim" type="xs:string" />
+              <xs:element name="kategoria_wagowa" type="xs:string" />
+              <xs:element name="data_urodzenia" type="xs:date" />
+              <xs:element name="miejsce_urodzenia" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="warunki_fizyczne">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="wzrost" type="xs:unsignedByte" />
+              <xs:element name="zasieg_ramion" type="xs:unsignedByte" />
+              <xs:element name="waga" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="liczba_walk" type="xs:unsignedByte" />
+        <xs:element name="wygrane" type="xs:unsignedByte" />
+        <xs:element name="przegrane" type="xs:unsignedByte" />
+        <xs:element name="remisy" type="xs:unsignedByte" />
+        <xs:element name="trenerzy" type="xs:string" />
+        <xs:element name="osiagniecia">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tytuly">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:choice maxOccurs="unbounded">
+                      <xs:element name="rok" type="xs:unsignedShort" />
+                      <xs:element name="tytul" type="xs:string" />
+                    </xs:choice>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="nagrody">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:choice maxOccurs="unbounded">
+                      <xs:element name="rok" type="xs:unsignedShort" />
+                      <xs:element name="tytul" type="xs:string" />
+                    </xs:choice>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="walki">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="walka">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="data" type="xs:string" />
+                    <xs:element name="miejsce_walki">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="państwo" type="xs:string" />
+                          <xs:element name="miasto" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="przeciwnik">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="zdjecie">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="href" type="xs:string" />
+                              </xs:sequence>
+                              <xs:attribute name="alt" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="pseudonim" type="xs:string" />
+                          <xs:element name="liczba_walk" type="xs:unsignedByte" />
+                          <xs:element name="wygrane" type="xs:unsignedByte" />
+                          <xs:element name="przegrane" type="xs:unsignedByte" />
+                          <xs:element name="remisy" type="xs:unsignedByte" />
+                          <xs:element name="warunki_fizyczne">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="wzrost" type="xs:unsignedByte" />
+                                <xs:element name="zasieg_ramion" type="xs:unsignedByte" />
+                                <xs:element name="waga" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="imieinazwisko" type="xs:string" use="required" />
+                        <xs:attribute name="wikipedia" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="ciekawostka" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="wynik" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="filmografia">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="film">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="rok_premiery" type="xs:unsignedShort" />
+                    <xs:element name="ile_nominacji" type="xs:unsignedByte" />
+                    <xs:element name="ile_nagrod" type="xs:unsignedByte" />
+                  </xs:sequence>
+                  <xs:attribute name="tytul_filmu" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="ile_nominacji" type="xs:unsignedByte" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="data_debiutu" type="xs:string" use="required" />
+      <xs:attribute name="wikipedia" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
